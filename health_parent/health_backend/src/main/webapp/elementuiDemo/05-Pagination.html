@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 引入ElementUI样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!-- 引入ElementUI组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+    <div id="app">
+        <el-pagination
+                :page-size="20"
+                :pager-count="11"
+                layout="prev, pager, next"
+                :total="1000">
+        </el-pagination>
+    </div>
+
+    <script>
+        new Vue({
+            el:'#app'
+        })
+    </script>
+</body>
+</html>
