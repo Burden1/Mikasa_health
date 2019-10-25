@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mikasa.dao.CheckItemDao">
+    <!--1.插入检查项数据-->
+    <insert id="add" parameterType="com.mikasa.pojo.CheckItem">
+        insert into t_checkitem(code,name,sex,age,price,type,attention,remark)
+        values
+        (#{code},#{name},#{sex},#{age},#{price},#{type},#{attention},#{remark})
+    </insert>
+
+    <!--2.有条件的查询检查项-->
+    <select id="selectByCondition" parameterType="String" resultType="com.mikasa.pojo.CheckItem">
+        SELECT * FROM t_checkitem
+        /*因为查询条件不一定有，所以使用动态sql*/
+        <if test="value != null and value.length >0">
+            WHERE code = #{value} or name = #{value}
+        </if>
+    </select>
+
+    <!--3.根据检查项id查询关联的数据量-->
+    <select id="findCountByCheckItemId" parameterType="int" resultType="long">
+        SELECT count(*) FROM t_checkgroup_checkitem WHERE checkitem_id = #{checkitem_id}
+    </select>
+    <!--4.根据检查项id删除检查项-->
+    <delete id="deleteByCheckItemId" parameterType="int">
+        DELETE FROM t_checkitem WHERE id = #{id}
+    </delete>
+
+    <!--5.根据检查项id查询检查项-->
+    <select id="findByCheckItemId" parameterType="int" resultType="com.mikasa.pojo.CheckItem">
+        SELECT * FROM t_checkitem WHERE id = #{id}
+    </select>
+    <!--6.编辑检查项-->
+    <update id="edit" parameterType="com.mikasa.pojo.CheckItem">
+        UPDATE t_checkitem
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="code != null">
+                code = #{code},
+            </if>
+            <if test="age != null">
+                age = #{age},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="type != null">
+                type = #{type},
+            </if>
+            <if test="attention != null">
+                attention = #{attention},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+</mapper>
