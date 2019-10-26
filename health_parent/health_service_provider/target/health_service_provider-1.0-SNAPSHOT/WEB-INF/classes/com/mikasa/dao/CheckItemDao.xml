@@ -62,4 +62,9 @@
         </set>
         WHERE id = #{id}
     </update>
+    
+    <!--7.查询所有检查项-->
+    <select id="findAll" resultType="com.mikasa.pojo.CheckItem">
+        SELECT * FROM t_checkitem
+    </select>
 </mapper>

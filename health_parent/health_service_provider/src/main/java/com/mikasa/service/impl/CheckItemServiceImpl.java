@@ -3,11 +3,9 @@ package com.mikasa.service.impl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.mikasa.constant.MessageConstant;
 import com.mikasa.dao.CheckItemDao;
 import com.mikasa.entity.PageResult;
 import com.mikasa.entity.QueryPageBean;
-import com.mikasa.entity.Result;
 import com.mikasa.pojo.CheckItem;
 import com.mikasa.service.CheckItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,5 +69,11 @@ public class CheckItemServiceImpl implements CheckItemService{
     @Override
     public void edit(CheckItem checkItem) {
         checkItemDao.edit(checkItem);
+    }
+
+    //6.查询所有检查项
+    @Override
+    public List<CheckItem> findAll() {
+        return checkItemDao.findAll();
     }
 }

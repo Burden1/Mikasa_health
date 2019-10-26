@@ -113,3 +113,7 @@
 0:0:0:0:0:0:0:1 - - [25/Oct/2019:20:26:41 +0800] "GET /checkitem/findByCheckItemId.do?id=28 HTTP/1.1" 200 177 http-bio-82-exec-5 90
 0:0:0:0:0:0:0:1 - - [25/Oct/2019:20:26:55 +0800] "POST /checkitem/edit.do HTTP/1.1" 200 59 http-bio-82-exec-7 526
 0:0:0:0:0:0:0:1 - - [25/Oct/2019:20:26:55 +0800] "POST /checkitem/pageQuery.do HTTP/1.1" 200 1382 http-bio-82-exec-8 70
+0:0:0:0:0:0:0:1 - - [25/Oct/2019:20:49:18 +0800] "GET /pages/checkgroup.html HTTP/1.1" 200 17527 http-bio-82-exec-10 12
+0:0:0:0:0:0:0:1 - - [25/Oct/2019:20:49:18 +0800] "GET /js/axios.min.map HTTP/1.1" 404 983 http-bio-82-exec-1 4
+0:0:0:0:0:0:0:1 - - [25/Oct/2019:20:51:01 +0800] "GET /pages/checkgroup.html HTTP/1.1" 200 17692 http-bio-82-exec-3 11
+0:0:0:0:0:0:0:1 - - [25/Oct/2019:20:51:01 +0800] "GET /js/axios.min.map HTTP/1.1" 404 983 http-bio-82-exec-3 3

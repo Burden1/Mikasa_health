@@ -3,6 +3,8 @@ package com.mikasa.dao;
 import com.github.pagehelper.Page;
 import com.mikasa.pojo.CheckItem;
 
+import java.util.List;
+
 /**
  * 预约管理-检查项管理-Dao层
  */
@@ -19,4 +21,6 @@ public interface CheckItemDao {
     CheckItem findByCheckItemId(Integer id);
     //6.编辑检查项
     void edit(CheckItem checkItem);
+    //7.查询所有检查项
+    List<CheckItem> findAll();
 }

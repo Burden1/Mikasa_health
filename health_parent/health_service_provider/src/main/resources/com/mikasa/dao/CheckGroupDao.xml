@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mikasa.dao.CheckGroupDao">
+    <!--1.新增检查组-->
+    <insert id="add" parameterType="com.mikasa.pojo.CheckGroup" >
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+            select LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO t_checkgroup(code,name,helpCode,sex,remark,attention)
+        VALUES (#{code},#{name},#{helpCode},#{sex},#{remark},#{attention})
+    </insert>
+
+    <!--2.设置检查组与检查项多对多关联关系-->
+    <insert id="setCheckGroupAndCheckItem" parameterType="map">
+        insert into t_checkgroup_checkitem(checkgroup_id,checkitem_id)
+        values
+        (#{checkgroupId},#{checkitemId})
+    </insert>
+
+    <!--3.有条件的查询检查组-->
+    <select id="selectByCondition" resultType="com.mikasa.pojo.CheckGroup" parameterType="string">
+        SELECT * FROM t_checkgroup
+        <if test="value != null and value != '' and value.length >0">
+            WHERE code=#{value} or name=#{value} or helpCode=#{value}
+        </if>
+    </select>
+
+    <!--4.根据检查组id查询检查组-->
+    <select id="findById" parameterType="int" resultType="com.mikasa.pojo.CheckGroup">
+        SELECT * FROM t_checkgroup WHERE id = #{id}
+    </select>
+
+    <!--5.根据当前检查组id查询关联的检查项id集合-->
+    <select id="findCheckItemIdsByCheckGroupId" parameterType="int" resultType="int">
+        SELECT checkitem_id FROM t_checkgroup_checkitem WHERE checkgroup_id = #{id}
+    </select>
+
+    <!--6.编辑检查组-->
+    <update id="edit" parameterType="com.mikasa.pojo.CheckGroup">
+        UPDATE t_checkgroup
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="helpCode != null">
+                helpCode = #{helpCode},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+            <if test="attention != null">
+                attention = #{attention},
+            </if>
+        </set>
+        WHERE  id = #{id}
+    </update>
+
+    <!--7.根据检查组id删除关联的检查项-->
+    <delete id="deleteAssociation" parameterType="int">
+        DELETE FROM t_checkgroup_checkitem WHERE checkgroup_id = #{checkGroupId}
+    </delete>
+
+    <!--8.根据检查组id删除检查组-->
+    <delete id="deleteByCheckGroupId" parameterType="int">
+        DELETE FROM t_checkgroup WHERE id=#{id}
+    </delete>
+
+</mapper>
