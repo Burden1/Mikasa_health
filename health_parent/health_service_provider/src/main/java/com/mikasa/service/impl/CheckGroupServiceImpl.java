@@ -98,4 +98,10 @@ public class CheckGroupServiceImpl implements CheckGroupService{
         //2.再删除检查组
         checkGroupDao.deleteByCheckGroupId(id);
     }
+
+    //7.查询所有的检查组信息
+    @Override
+    public List<CheckGroup> findAll() {
+        return checkGroupDao.findAll();
+    }
 }

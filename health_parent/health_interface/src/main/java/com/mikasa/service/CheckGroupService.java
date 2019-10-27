@@ -22,4 +22,6 @@ public interface CheckGroupService {
     void edit(CheckGroup checkGroup, Integer[] checkitemIds);
     //6.根据检查组id删除检查组
     void deleteByCheckGroupId(Integer id);
+    //7.查询所有的检查组信息
+    List<CheckGroup> findAll();
 }

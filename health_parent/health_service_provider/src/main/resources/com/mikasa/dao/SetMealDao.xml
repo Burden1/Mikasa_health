@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mikasa.dao.SetMealDao">
+    <!--1.新增套餐-->
+    <insert id="add" parameterType="com.mikasa.pojo.Setmeal" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_setmeal(name,code,helpCode,sex,age,price,remark,attention,img)
+        VALUES (#{name},#{code},#{helpCode},#{sex},#{age},#{price},#{remark},#{attention},#{img})
+    </insert>
+
+    <!--2.设置套餐与检查组的关联关系-->
+    <insert id="setSetMealAndCheckGroup" parameterType="map">
+        INSERT INTO t_setmeal_checkgroup(setmeal_id,checkgroup_id)
+        VALUES (#{setmealId},#{checkgroupId})
+    </insert>
+
+    <!--3.有条件的查询套餐-->
+    <select id="selectByCondition" parameterType="string" resultType="com.mikasa.pojo.Setmeal">
+        SELECT * FROM t_setmeal
+        <if test="value != null and value != '' and value.length > 0 ">
+            WHERE name=#{value} or code=#{value} or helpCode=#{value}
+        </if>
+    </select>
+
+    <!--4.根据套餐id查询套餐信息-->
+    <select id="findById" parameterType="int" resultType="com.mikasa.pojo.Setmeal">
+        SELECT * FROM t_setmeal WHERE id = #{id};
+    </select>
+
+    <!--5.根据套餐id查询其所关联的检查组id集合-->
+    <select id="findCheckGroupIdsBySetMealId" parameterType="int" resultType="int">
+        SELECT checkgroup_id FROM t_setmeal_checkgroup WHERE setmeal_id = #{id}
+    </select>
+
+    <!--6.编辑套餐-->
+    <update id="edit" parameterType="com.mikasa.pojo.Setmeal">
+        UPDATE t_setmeal
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="code != null">
+                code = #{code},
+            </if>
+            <if test="helpCode != null">
+                helpCode = #{helpCode},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="age != null">
+                age = #{age},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+            <if test="attention != null">
+                attention = #{attention},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!--7.根据套餐id删除关联的检查组-->
+    <delete id="deleteAssociation" parameterType="int">
+        DELETE FROM t_setmeal_checkgroup WHERE setmeal_id = #{setmealId}
+    </delete>
+
+    <!--8.根据套餐id删除套餐数据-->
+    <delete id="deleteBySetMealId" parameterType="int">
+        DELETE FROM t_setmeal WHERE id = #{id}
+    </delete>
+</mapper>

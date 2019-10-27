@@ -1,0 +1,24 @@
+package com.mikasa.service;
+import com.mikasa.entity.PageResult;
+import com.mikasa.entity.QueryPageBean;
+import com.mikasa.pojo.Setmeal;
+
+import java.util.List;
+
+/**
+ * 预约管理-套餐管理-服务接口层
+ */
+public interface SetMealService {
+    //1.新增套餐
+    void add(Setmeal setmeal, Integer[] checkgroupIds);
+    //2.分页查询套餐
+    PageResult pageQuery(QueryPageBean queryPageBean);
+    //3.根据套餐id查询套餐信息
+    Setmeal findById(Integer id);
+    //4.根据套餐id查询所关联的检查组集合
+    List<Integer> findCheckGroupIdsBySetMealId(Integer id);
+    //5.编辑套餐
+    void edit(Setmeal setmeal, Integer[] checkgroupIds);
+    //6.通过套餐id删除套餐
+    void deleteBySetMealId(Integer id);
+}

@@ -1,3 +1,5 @@
+com\mikasa\dao\SetMealDao.class
+com\mikasa\service\impl\SetMealServiceImpl.class
 com\mikasa\dao\CheckGroupDao.class
 com\mikasa\service\impl\CheckGroupServiceImpl.class
 com\mikasa\service\impl\CheckItemServiceImpl.class

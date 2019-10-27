@@ -69,4 +69,8 @@
         DELETE FROM t_checkgroup WHERE id=#{id}
     </delete>
 
+    <!--9.查询所有的检查组信息-->
+    <select id="findAll" resultType="com.mikasa.pojo.CheckGroup">
+        SELECT * FROM t_checkgroup
+    </select>
 </mapper>

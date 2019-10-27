@@ -229,6 +229,8 @@
                                         </el-form>
                                     </el-tab-pane>
                                     <el-tab-pane label="检查项信息" name="second">
+                                        <el-input placeholder="编码/名称" v-model="checkItemQueryString" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter"></el-input>
+                                        <el-button @click="findPage()" class="dalfBut">查询</el-button>
 										<div class="checkScrol">
 											<table class="datatable">
 												<thead>

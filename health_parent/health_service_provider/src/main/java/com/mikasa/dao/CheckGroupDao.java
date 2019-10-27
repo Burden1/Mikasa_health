@@ -23,4 +23,6 @@ public interface CheckGroupDao {
     void deleteAssociation(Integer checkGroupId);
     //8.根据检查组id删除检查组
     void deleteByCheckGroupId(Integer id);
+    //9.查询所有的检查组信息
+    List<CheckGroup> findAll();
 }

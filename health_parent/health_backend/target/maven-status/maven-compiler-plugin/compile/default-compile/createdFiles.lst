@@ -1,2 +1,3 @@
 com\mikasa\controller\CheckGroupController.class
 com\mikasa\controller\CheckItemController.class
+com\mikasa\controller\SetMealController.class
