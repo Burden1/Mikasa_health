@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mikasa.dao.OrderSettingDao">
+    <!--1.通过预约日期查找预约数量-->
+    <select id="findCountByOrderDate" parameterType="date" resultType="long">
+        SELECT count(id) FROM t_ordersetting WHERE orderDate = #{orderDate}
+    </select>
+
+    <!--2.更新预约数量-->
+    <update id="editNumberByOrderDate" parameterType="date">
+        UPDATE t_ordersetting SET number = #{number} WHERE orderDate = #{orderDate}
+    </update>
+
+    <!--3.添加预约设置-->
+    <insert id="add" parameterType="com.mikasa.pojo.OrderSetting">
+        INSERT INTO t_ordersetting
+      		(orderDate,number,reservations)
+                      values
+      		(#{orderDate},#{number},#{reservations})
+    </insert>
+
+    <!--4.根据预约日期范围查询预约数据-->
+    <select id="getOrderSettingByMonth" parameterType="map" resultType="com.mikasa.pojo.OrderSetting">
+        SELECT * FROM t_ordersetting WHERE orderDate BETWEEN #{begin} AND #{end}
+    </select>
+</mapper>

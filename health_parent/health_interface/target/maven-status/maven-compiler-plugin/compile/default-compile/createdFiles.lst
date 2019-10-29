@@ -1,3 +1,4 @@
 com\mikasa\service\CheckItemService.class
 com\mikasa\service\CheckGroupService.class
 com\mikasa\service\SetMealService.class
+com\mikasa\service\OrderSettingService.class
