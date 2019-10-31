@@ -73,4 +73,40 @@
     <delete id="deleteBySetMealId" parameterType="int">
         DELETE FROM t_setmeal WHERE id = #{id}
     </delete>
+
+    <!--9.查询所有套餐信息-->
+    <select id="findAllSetmeal" resultType="com.mikasa.pojo.Setmeal">
+        SELECT * FROM t_setmeal
+    </select>
+
+    <!--10.根据套餐id查询图片路径-->
+    <select id="findImgUrl" parameterType="int" resultType="string">
+        SELECT img FROM t_setmeal WHERE id = #{id}
+    </select>
+
+    <!--封装属性的RM-->
+    <resultMap id="baseResultMap" type="com.mikasa.pojo.Setmeal">
+        <id column="id" property="id"/>
+        <result column="name" property="name" />
+        <result column="code" property="code" />
+        <result column="helpCode" property="helpCode" />
+        <result column="sex" property="sex" />
+        <result column="age" property="age" />
+        <result column="price" property="price" />
+        <result column="remark" property="remark" />
+        <result column="attention" property="attention" />
+        <result column="img" property="img" />
+    </resultMap>
+
+    <resultMap id="findByIdResultMap" type="com.mikasa.pojo.Setmeal" extends="baseResultMap">
+        <collection property="checkGroups"
+                    ofType="com.mikasa.pojo.CheckGroup"
+                    select="com.mikasa.dao.CheckGroupDao.findCheckGroupById"
+                    column="id">
+        </collection>
+    </resultMap>
+    <!--11.根据套餐id查询套餐详情-->
+    <select id="findSetmealDetail" parameterType="int" resultMap="findByIdResultMap" >
+        SELECT * FROM t_setmeal WHERE  id = #{id}
+    </select>
 </mapper>

@@ -73,4 +73,26 @@
     <select id="findAll" resultType="com.mikasa.pojo.CheckGroup">
         SELECT * FROM t_checkgroup
     </select>
+
+    <!--封装属性-->
+    <resultMap id="baseResultMap" type="com.mikasa.pojo.CheckGroup">
+        <id column="id" property="id"/>
+        <result column="code" property="code"/>
+        <result column="name" property="name"/>
+        <result column="helpCode" property="helpCode"/>
+        <result column="sex" property="sex"/>
+        <result column="remark" property="remark"/>
+        <result column="attention" property="attention"/>
+    </resultMap>
+
+    <resultMap id="findByIdResultMap" type="com.mikasa.pojo.CheckGroup" extends="baseResultMap">
+        <collection property="checkItems" ofType="com.mikasa.pojo.CheckItem"
+                    select="com.mikasa.dao.CheckItemDao.findCheckItemsById" column="id">
+        </collection>
+    </resultMap>
+    <!--10.根据套餐id查询检查组信息-->
+    <select id="findCheckGroupById" parameterType="int" resultMap="findByIdResultMap">
+        SELECT * FROM t_checkgroup WHERE id IN
+        (SELECT checkgroup_id FROM t_setmeal_checkgroup WHERE setmeal_id = #{setmealId} )
+    </select>
 </mapper>

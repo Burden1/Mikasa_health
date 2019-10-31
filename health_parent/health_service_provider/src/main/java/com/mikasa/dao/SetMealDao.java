@@ -26,4 +26,10 @@ public interface SetMealDao {
     void deleteAssociation(Integer setmealId);
     //8.根据套餐id删除套餐数据
     void deleteBySetMealId(Integer id);
+    //9.查询所有套餐信息
+    List<Setmeal> findAllSetmeal();
+    //10.根据套餐id查询图片路径
+    String findImgUrl(Integer id);
+    //11根据套餐id查询套餐详情
+    Setmeal findSetmealDetail(int id);
 }

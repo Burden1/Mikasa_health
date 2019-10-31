@@ -86,6 +86,22 @@ public class SetMealServiceImpl implements SetMealService {
         setMealDao.deleteBySetMealId(id);
     }
 
+    //7，查询所有套餐信息
+    @Override
+    public List<Setmeal> findAllSetmeal() {
+        return setMealDao.findAllSetmeal();
+    }
+
+    //8.根据套餐id查询图片
+    public String findImgUrl(Integer id) {
+        return setMealDao.findImgUrl(id);
+    }
+
+    //9.根据套餐id查询套餐详情
+    public Setmeal findSetmealDetail(int id) {
+        return setMealDao.findSetmealDetail(id);
+    }
+
     //设置套餐和检查组多对多的关联关系
     private void setSetMealAndCheckGroup(Integer setmealId, Integer[] checkgroupIds) {
         if (checkgroupIds != null && checkgroupIds.length > 0){

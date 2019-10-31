@@ -67,4 +67,10 @@
     <select id="findAll" resultType="com.mikasa.pojo.CheckItem">
         SELECT * FROM t_checkitem
     </select>
+
+    <!--8.根据检查组id查询检查项-->
+    <select id="findCheckItemsById" parameterType="int" resultType="com.mikasa.pojo.CheckItem">
+        SELECT * FROM t_checkitem WHERE id IN
+        (SELECT checkitem_id FROM t_checkgroup_checkitem WHERE checkgroup_id = #{checkGroupId})
+    </select>
 </mapper>

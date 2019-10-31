@@ -21,4 +21,10 @@ public interface SetMealService {
     void edit(Setmeal setmeal, Integer[] checkgroupIds);
     //6.通过套餐id删除套餐
     void deleteBySetMealId(Integer id);
+    //7.查询所有套餐信息
+    List<Setmeal> findAllSetmeal();
+    //8.根据套餐id查询图片路径
+    String findImgUrl(Integer id);
+    //9.根据套餐id查询套餐详情
+    Setmeal findSetmealDetail(int id);
 }

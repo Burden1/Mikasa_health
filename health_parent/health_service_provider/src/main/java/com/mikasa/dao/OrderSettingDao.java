@@ -17,4 +17,8 @@ public interface OrderSettingDao {
     void add(OrderSetting orderSetting);
     //4.根据预约日期范围查询预约数据
     List<OrderSetting> getOrderSettingByMonth(Map map);
+    //5.通过预约日期查找是否已经进行了预约设置
+    OrderSetting findOrderSettingByOrderDate(Date orderDate);
+    //6.更新当日预约设置已预约人数
+    void editReservationsByOrderDate(OrderSetting orderSetting);
 }

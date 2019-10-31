@@ -126,4 +126,17 @@ public class SetMealController {
             return new Result(false,MessageConstant.DELETE_SETMEAL_FAIL);
         }
     }
+
+    //8.根据id查询图片路径
+    @RequestMapping("/findImgUrl")
+    public Result findImgUrl(Integer id){
+        try {
+            String imgUrl = setMealService.findImgUrl(id);
+            return new Result(true,MessageConstant.QUERY_IMAGEURL_SUCCESS,imgUrl);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new Result(false,MessageConstant.QUERY_IMAGEURL_FAIL);
+        }
+
+    }
 }

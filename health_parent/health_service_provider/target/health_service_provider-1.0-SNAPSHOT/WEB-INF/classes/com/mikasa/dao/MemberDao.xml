@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mikasa.dao.MemberDao">
+    <!--1.根据手机号查询会员-->
+    <select id="findMemberByTel" parameterType="string" resultType="com.mikasa.pojo.Member">
+        SELECT * FROM t_member WHERE phoneNumber = #{telephone}
+    </select>
+    <!--2.添加会员-->
+    <insert id="add" parameterType="com.mikasa.pojo.Member" >
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO t_member(fileNumber,name,sex,idCard,phoneNumber,regTime,password,email,birthday,remark)
+        VALUES (#{fileNumber},#{name},#{sex},#{idCard},#{phoneNumber},#{regTime},#{password},#{email},#{birthday},#{remark})
+    </insert>
+</mapper>

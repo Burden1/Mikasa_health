@@ -24,4 +24,14 @@
     <select id="getOrderSettingByMonth" parameterType="map" resultType="com.mikasa.pojo.OrderSetting">
         SELECT * FROM t_ordersetting WHERE orderDate BETWEEN #{begin} AND #{end}
     </select>
+
+    <!--5.根据预约日期查询是否已进行了预约设置-->
+    <select id="findOrderSettingByOrderDate" parameterType="date" resultType="com.mikasa.pojo.OrderSetting">
+        SELECT * FROM t_ordersetting WHERE orderDate = #{orderDate}
+    </select>
+
+    <!--6.更新今日已预约人数-->
+    <update id="editReservationsByOrderDate" parameterType="com.mikasa.pojo.OrderSetting">
+        UPDATE t_ordersetting SET reservations = #{reservations} WHERE orderDate = #{orderDate}
+    </update>
 </mapper>

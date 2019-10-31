@@ -417,11 +417,21 @@
             },
             //编辑
             handleEdit(){
+                //4.发送ajax请求，查询数据库，通过套餐id查找图片路径，进行上传图片回显 本应该回显 确回显不出来 TODO
+                axios.post("/setmeal/findImgUrl.do?id=" + row.id).then((res)=>{
+                    if (res.data.flag){
+                        //查询成功,封装模型数据
+                        this.imageUrl = 'http://pzgd5b9xr.bkt.clouddn.com/' + res.data.data;
+                    }else {
+                        this.$message = res.data.message;
+                    }
+                });
                 //发送ajax请求，把表单数据(套餐基本信息，检查组id集合)发送到后台进行处理
                 axios.post("/setmeal/edit.do?checkgroupIds=" + this.checkgroupIds,this.formData).then((res)=>{
                     if (res.data.flag){
                         //关闭窗口
                         this.dialogFormVisible4Edit = false;
+
                         //执行成功，显示成功信息
                         this.$message({
                             type:'success',
@@ -465,7 +475,7 @@
                     }else {
                         this.$message.error(res.data.message);
                     }
-                })
+                });
             },
             //删除
             handleDelete(row){
