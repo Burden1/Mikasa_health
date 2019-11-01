@@ -1,3 +1,4 @@
 com\mikasa\controller\OrderController.class
 com\mikasa\controller\ValicateCodeController.class
+com\mikasa\controller\MemberController.class
 com\mikasa\controller\SetMealController.class

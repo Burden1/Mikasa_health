@@ -4,6 +4,7 @@ import com.mikasa.entity.QueryPageBean;
 import com.mikasa.pojo.Setmeal;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 预约管理-套餐管理-服务接口层
@@ -27,4 +28,6 @@ public interface SetMealService {
     String findImgUrl(Integer id);
     //9.根据套餐id查询套餐详情
     Setmeal findSetmealDetail(int id);
+    //10.查找预约套餐的人数
+    List<Map<String,Object>> findSetmealCount();
 }

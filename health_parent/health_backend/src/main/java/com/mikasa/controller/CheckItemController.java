@@ -7,6 +7,7 @@ import com.mikasa.entity.QueryPageBean;
 import com.mikasa.service.CheckItemService;
 import com.mikasa.entity.Result;
 import com.mikasa.pojo.CheckItem;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,6 +42,7 @@ public class CheckItemController {
     }
 
     //3.根据检查项id删除检查项
+    @PreAuthorize("hasAuthority('CHECKITEM_DELETE')")//权限校验
     @RequestMapping("/delete")
     public Result deleteByCheckItemId(Integer id){
         try {

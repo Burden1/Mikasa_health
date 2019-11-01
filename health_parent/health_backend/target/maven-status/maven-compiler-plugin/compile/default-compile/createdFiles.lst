@@ -1,4 +1,7 @@
+com\mikasa\controller\ReportController.class
+com\mikasa\service\SpringSecurityUserService.class
 com\mikasa\controller\CheckItemController.class
+com\mikasa\controller\UserController.class
 com\mikasa\controller\CheckGroupController.class
 com\mikasa\controller\OrderSettingController.class
 com\mikasa\controller\SetMealController.class

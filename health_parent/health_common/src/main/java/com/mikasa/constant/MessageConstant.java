@@ -70,4 +70,5 @@ public class MessageConstant {
     public static final String QUERY_IMAGEURL_FAIL = "查询图片失败";
     public static final String QUERY_IMAGEURL_SUCCESS = "查询图片成功" ;
     public static final String ORDER_FAIL ="预约失败" ;
+    public static final String USER_NOT_FIND = "用户不存在";
 }

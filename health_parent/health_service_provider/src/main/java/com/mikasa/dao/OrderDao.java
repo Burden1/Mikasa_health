@@ -12,4 +12,14 @@ public interface OrderDao {
     void add(Order order);
     //3.根据预约id查询预约信息
     Map findOrderDetailByOrderId(Integer id);
+    //4.根据日期统计预约数
+    Integer findOrderCountByDate(String today);
+    //5.根据日期统计预约数，统计指定日期之后的预约数
+    Integer findOrderCountAfterDate(String thisWeekMonday);
+    //6.根据日期统计到诊数
+    Integer findVisitsCountByDate(String today);
+    //7.根据日期统计到诊数，统计指定日期之后的到诊数
+    Integer findVisitsCountAfterDate(String thisWeekMonday);
+    //8.查询热门套餐，查询前4条
+    List<Map> findHotSetmeal();
 }

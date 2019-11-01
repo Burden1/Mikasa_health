@@ -102,6 +102,12 @@ public class SetMealServiceImpl implements SetMealService {
         return setMealDao.findSetmealDetail(id);
     }
 
+    //10.查询套餐对应预约人数
+    @Override
+    public List<Map<String, Object>> findSetmealCount() {
+        return setMealDao.findSetmealCount();
+    }
+
     //设置套餐和检查组多对多的关联关系
     private void setSetMealAndCheckGroup(Integer setmealId, Integer[] checkgroupIds) {
         if (checkgroupIds != null && checkgroupIds.length > 0){

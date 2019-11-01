@@ -1,6 +1,8 @@
-com\mikasa\service\CheckItemService.class
 com\mikasa\service\OrderService.class
 com\mikasa\service\CheckGroupService.class
+com\mikasa\service\OrderSettingService.class
+com\mikasa\service\CheckItemService.class
+com\mikasa\service\ReportService.class
 com\mikasa\service\SetMealService.class
 com\mikasa\service\MemberService.class
-com\mikasa\service\OrderSettingService.class
+com\mikasa\service\UserService.class

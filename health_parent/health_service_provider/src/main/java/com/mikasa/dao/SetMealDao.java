@@ -32,4 +32,6 @@ public interface SetMealDao {
     String findImgUrl(Integer id);
     //11根据套餐id查询套餐详情
     Setmeal findSetmealDetail(int id);
+    //12.查询套餐对应预约人数
+    List<Map<String,Object>> findSetmealCount();
 }

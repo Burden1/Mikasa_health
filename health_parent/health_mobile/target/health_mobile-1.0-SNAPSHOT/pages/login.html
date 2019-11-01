@@ -22,7 +22,7 @@
         <!-- 页面头部 -->
         <div class="top-header">
             <span class="f-left"><i class="icon-back"></i></span>
-            <span class="center">传智健康</span>
+            <span class="center">Mikasa健康</span>
             <span class="f-right"><i class="icon-more"></i></span>
         </div>
         <div style="margin-left: 20px">手机快速登录</div>
@@ -45,7 +45,7 @@
                     </div>
                     <div class="input-row" style="font-size: 12px">
                         <input type="checkbox" checked>
-                        阅读并同意《传智健康用户协议》《传智健康隐私条款》
+                        阅读并同意《Mikasa健康用户协议》《Mikasa健康隐私条款》
                     </div>
                     <div class="btn yes-btn"><a @click="login()" href="#">登录</a></div>
                 </form>
@@ -60,17 +60,19 @@
                 loginInfo:{}//登录信息
             },
             methods:{
-                //发送验证码
+                //发送验证码 手机快速登录
                 sendValidateCode(){
+                    //验证手机号格式
                     var telephone = this.loginInfo.telephone;
-                    if (!checkTelephone(telephone)) {
+                    /*if (!checkTelephone(telephone)) {
                         this.$message.error('请输入正确的手机号');
                         return false;
-                    }
+                    }*/
                     validateCodeButton = $("#validateCodeButton")[0];
                     clock = window.setInterval(doLoop, 1000); //一秒执行一次
-                    axios.post("/validateCode/send4Login.do?telephone=" + telephone).then((response) => {
-                        if(!response.data.flag){
+                    //发送ajax请求，为用户发送手机验证码
+                    axios.post("/validateCode/send4Login.do?telephone=" + telephone).then((res) => {
+                        if(!res.data.flag){
                             //验证码发送失败
                             this.$message.error('验证码发送失败，请检查手机号输入是否正确');
                         }
@@ -78,18 +80,19 @@
                 },
                 //登录
                 login(){
-                    var telephone = this.loginInfo.telephone;
+                    //1.校验手机号格式
+                    /*var telephone = this.loginInfo.telephone;
                     if (!checkTelephone(telephone)) {
                         this.$message.error('请输入正确的手机号');
                         return false;
-                    }
-                    axios.post("/login/check.do",this.loginInfo).then((response) => {
-                        if(response.data.flag){
-                            //登录成功,跳转到index.html
-                            window.location.href="index.html";
+                    }*/
+                    //2.发送ajax请求，将登录信息传到后台进行处理
+                    axios.post("/member/login.do",this.loginInfo).then((res)=>{
+                        if (res.data.flag){
+                            //登录成功，跳转到会员首页
+                            window.location.href = "member.html";
                         }else{
-                            //失败，提示失败信息
-                            this.$message.error(response.data.message);
+                            this.$message.error(res.data.message);
                         }
                     });
                 }

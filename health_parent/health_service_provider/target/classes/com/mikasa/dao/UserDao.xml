@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mikasa.dao.UserDao">
+    <!--1.根据用户名查询用户信息-->
+    <select id="findUserByUsername" parameterType="string" resultType="com.mikasa.pojo.User">
+        SELECT * FROM t_user WHERE username = #{username}
+    </select>
+</mapper>

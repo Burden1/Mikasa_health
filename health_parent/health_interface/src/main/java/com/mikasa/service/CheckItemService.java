@@ -3,6 +3,7 @@ package com.mikasa.service;
 import com.mikasa.entity.PageResult;
 import com.mikasa.entity.QueryPageBean;
 import com.mikasa.pojo.CheckItem;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import java.util.List;
 

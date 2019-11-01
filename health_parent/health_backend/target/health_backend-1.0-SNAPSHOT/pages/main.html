@@ -37,14 +37,16 @@
                         <el-dropdown class="avatar-container right-menu-item" trigger="click">
                             <div class="avatar-wrapper">
                                 <img src="../img/mikasa.jpg" class="user-avatar">
-                                Mikasa
+                                {{username}}
                             </div>
                             <el-dropdown-menu slot="dropdown">
                                 <el-dropdown-item divided>
                                     <span style="display:block;">修改密码</span>
                                 </el-dropdown-item>
                                 <el-dropdown-item divided>
-                                        <span style="display:block;">退出</span>
+                                        <span style="display:block;">
+                                            <a href="/logout.do">退出</a>
+                                        </span>
                                     </el-dropdown-item>
                             </el-dropdown-menu>
                         </el-dropdown>
@@ -68,7 +70,7 @@
                     </el-menu>
                 </el-aside>
                 <el-container>
-                    <iframe name="right" class="el-main" src="ordersetting.html" width="100%" height="580px" frameborder="0"></iframe>
+                    <iframe name="right" class="el-main" src="checkitem.html" width="100%" height="580px" frameborder="0"></iframe>
                 </el-container>
             </el-container>
         </el-container>
@@ -78,10 +80,12 @@
 <script src="../js/vue.js"></script>
 <script src="../plugins/elementui/index.js"></script>
 <script type="text/javascript" src="../js/jquery.min.js"></script>
+<script src="../js/axios-0.18.0.js"></script>
 <script>
     new Vue({
         el: '#app',
         data:{
+            username:'',//当前登录用户的用户名
             menuList:[
                 {
                     "path": "1",
@@ -170,13 +174,33 @@
                     "children":[//是否有子菜单，若没有，则为[]
                         {
                             "path": "/5-1",
-                            "title": "工作量统计",
-                            "linkUrl":"all-medical-list.html",
+                            "title": "会员数量统计",
+                            "linkUrl":"report_member.html",
+                            "children":[]
+                        },
+                        {
+                            "path": "/5-2",
+                            "title": "套餐预约占比统计",
+                            "linkUrl":"report_setmeal.html",
+                            "children":[]
+                        },
+                        {
+                            "path": "/5-3",
+                            "title": "运营数据统计",
+                            "linkUrl":"report_business.html",
                             "children":[]
                         }
                     ]
                 }
             ]
+        },
+        created(){
+            //发送ajax请求，请求Controller获取当前登录用户的用户名，展示到页面中
+            axios.get("/user/getUsername.do").then((res) => {
+                if(res.data.flag){
+                    this.username = res.data.data;
+                }
+            });
         }
     });
     $(function() {
