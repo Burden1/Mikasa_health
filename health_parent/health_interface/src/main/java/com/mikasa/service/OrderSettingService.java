@@ -1,4 +1,6 @@
 package com.mikasa.service;
+import com.mikasa.entity.PageResult;
+import com.mikasa.entity.QueryPageBean;
 import com.mikasa.pojo.OrderSetting;
 
 import java.util.List;

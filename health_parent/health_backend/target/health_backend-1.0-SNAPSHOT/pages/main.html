@@ -30,7 +30,7 @@
                 <nav class="navbar navbar-static-top" :class=''>
                     <!-- Logo -->
                     <a href="#" class="logo" style="text-align:center">
-                        <span class="logo-lg"><img src="../img/mikasahealth.png" width="180" height="48px"></span>
+                        <span class="logo-lg"><img src="../img/mikasaLogo2.png" width="240" height="58px"></span>
                     </a>
                     <div class="right-menu">
                         <span class="help"><i class="fa fa-exclamation-circle" aria-hidden="true"></i>帮助</span>
@@ -125,7 +125,7 @@
                         {
                             "path": "/3-1",
                             "title": "预约列表",
-                            "linkUrl":"ordersettinglist.html",
+                            "linkUrl":"order_list.html",
                             "children":[]
                         },
                         {
@@ -191,7 +191,26 @@
                             "children":[]
                         }
                     ]
-                }
+                },
+                {
+                    "path": "6",
+                    "title": "用户管理",
+                    "icon":"fa-user-md",
+                    "children": [
+                        {
+                            "path": "/2-1",
+                            "title": "个人信息",
+                            "linkUrl":"usrInfo.html",
+                            "children":[]
+                        },
+                        {
+                            "path": "/2-2",
+                            "title": "修改密码",
+                            "linkUrl":"update_pwd.html",
+                            "children":[]
+                        },
+                    ]
+                },
             ]
         },
         created(){

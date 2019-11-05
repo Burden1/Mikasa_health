@@ -1,5 +1,6 @@
 package com.mikasa.dao;
 
+import com.github.pagehelper.Page;
 import com.mikasa.pojo.Order;
 
 import java.util.List;
@@ -22,4 +23,12 @@ public interface OrderDao {
     Integer findVisitsCountAfterDate(String thisWeekMonday);
     //8.查询热门套餐，查询前4条
     List<Map> findHotSetmeal();
+    //9.有条件的查询预约数据
+    Page<Order> selectByCondition(String queryString);
+    //10.根据id取消预约
+    void cancelOrder(Integer id);
+    //11.根据预约id查询预约信息
+    Order findById(Integer id);
+    //12.编辑预约信息
+    void edit(Order order);
 }

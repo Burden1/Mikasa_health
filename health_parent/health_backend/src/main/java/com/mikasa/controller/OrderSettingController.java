@@ -2,6 +2,8 @@ package com.mikasa.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.mikasa.constant.MessageConstant;
+import com.mikasa.entity.PageResult;
+import com.mikasa.entity.QueryPageBean;
 import com.mikasa.entity.Result;
 import com.mikasa.pojo.OrderSetting;
 import com.mikasa.service.OrderSettingService;

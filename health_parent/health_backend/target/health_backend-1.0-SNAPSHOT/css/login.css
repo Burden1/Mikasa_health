@@ -96,9 +96,9 @@ html,body {
 }
 .login-container .show-pwd {
   position: absolute;
-  right: 10px;
-  top: 7px;
-  font-size: 16px;
+  right: 15px;
+  top: 10px;
+  font-size: 20px;
   color: #889aa4;
   cursor: pointer;
   user-select: none;
@@ -119,10 +119,10 @@ html,body {
   
 }
 .logoInfo .logo{
-	background: url(../img/mikasahealth2.png) no-repeat;
+	background: url(../img/mikasaLogo.png) no-repeat;
 	display:inline-block;
-	width: 200px;
-	height: 30px;
+	width: 500px;
+	height: 90px;
   display: inline-block;
   vertical-align: middle;
 }
@@ -135,8 +135,8 @@ html,body {
   margin: 0;
 }
 .svg-container span{
-  width: 22px;
-  height: 22px;
+  width: 30px;
+  height: 30px;
   display: inline-block;
 }
 .svg-container .user{

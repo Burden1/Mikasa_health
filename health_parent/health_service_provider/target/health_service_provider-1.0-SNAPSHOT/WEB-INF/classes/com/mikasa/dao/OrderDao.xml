@@ -76,4 +76,40 @@
         group by o.setmeal_id
         order by setmeal_count desc limit 0,4
     </select>
+
+
+    <!--9.有条件的查询预约数据，通过预约日期和姓名查询-->
+    <select id="selectByCondition" parameterType="string" resultType="com.mikasa.pojo.Order">
+        SELECT * FROM t_order
+        /*因为查询条件不一定有，所以使用动态sql*/
+        <if test="value != null and value.length >0">
+            WHERE member_id = #{value} or orderDate = #{value}
+        </if>
+    </select>
+
+    <!--10.根据id取消预约-->
+    <delete id="cancelOrder" parameterType="int">
+        DELETE FROM t_order WHERE id =#{id}
+    </delete>
+
+    <!--11.预约id查询预约信息-->
+    <select id="findById" parameterType="int" resultType="com.mikasa.pojo.Order">
+        SELECT * FROM t_order WHERE id =#{id}
+    </select>
+
+    <!--12.预约信息-->
+    <update id="edit" parameterType="com.mikasa.pojo.Order" >
+        UPDATE t_order
+        <set>
+            <if test="orderDate != null">
+            orderDate = #{orderDate},
+            </if>
+            <if test="orderType != null">
+                orderType = #{orderType},
+            </if>
+            <if test="orderStatus != null">
+                orderStatus = #{orderStatus}
+            </if>
+        </set>
+    </update>
 </mapper>

@@ -1,10 +1,14 @@
 package com.mikasa.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.mikasa.constant.MessageConstant;
 import com.mikasa.dao.MemberDao;
 import com.mikasa.dao.OrderDao;
 import com.mikasa.dao.OrderSettingDao;
+import com.mikasa.entity.PageResult;
+import com.mikasa.entity.QueryPageBean;
 import com.mikasa.entity.Result;
 import com.mikasa.pojo.Member;
 import com.mikasa.pojo.Order;
@@ -106,5 +110,43 @@ public class OrderServiceImpl implements OrderService {
             map.put("orderDate",DateUtils.parseDate2String(orderDate));
         }
         return map;
+    }
+
+    //4，分页查询预约数据
+    @Override
+    public PageResult pageQuery(QueryPageBean queryPageBean) {
+        //1.获取请求参数
+        Integer currentPage = queryPageBean.getCurrentPage();
+        Integer pageSize = queryPageBean.getPageSize();
+        String queryString = queryPageBean.getQueryString();
+        //2.通过请求参数分页
+        PageHelper.startPage(currentPage,pageSize);
+        //3.有条件的查询
+        Page<Order> page = orderDao.selectByCondition(queryString);
+        //4.封装页面需要的返回结果
+        return new PageResult(page.getTotal(),page.getResult());
+    }
+
+    //5.根据id取消预约
+    @Override
+    public void cancelOrder(Integer id) {
+        orderDao.cancelOrder(id);
+    }
+    //6.新增预约
+    @Override
+    public void add(Order order) {
+        orderDao.add(order);
+    }
+
+    //7根据预约id查询预约信息
+    @Override
+    public Order findById(Integer id) {
+        return orderDao.findById(id);
+    }
+
+    //8.编辑雨夜信息
+    @Override
+    public void edit(Order order) {
+        orderDao.edit(order);
     }
 }

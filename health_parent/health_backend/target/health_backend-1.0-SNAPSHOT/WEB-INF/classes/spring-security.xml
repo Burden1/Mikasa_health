@@ -51,7 +51,7 @@
                 username-parameter="username"
                 password-parameter="password"
                 login-processing-url="/login.do"
-                default-target-url="/pages/1.html"
+                default-target-url="/pages/main.html"
                 authentication-failure-url="/login.html"></security:form-login>
 
         <!--

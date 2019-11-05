@@ -71,4 +71,10 @@ public class MessageConstant {
     public static final String QUERY_IMAGEURL_SUCCESS = "查询图片成功" ;
     public static final String ORDER_FAIL ="预约失败" ;
     public static final String USER_NOT_FIND = "用户不存在";
+    public static final String CANCEL_ORDER_SUCCESS ="取消预约成功" ;
+    public static final String CANCEL_ORDER_FAIL = "取消预约失败";
+    public static final String ADD_ORDER_SUCCESS = "新增预约成功";
+    public static final String ADD_ORDER_FAIL = "新增预约失败";
+    public static final String EDIT_ORDER_SUCCESS = "编辑预约信息成功";
+    public static final String EDIT_ORDER_ERROR = "编辑预约信息失败";
 }

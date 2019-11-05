@@ -31,7 +31,6 @@
                         <el-button type="primary" class="butT" @click="handleCreate()">新建</el-button>
                         <!--批量删除按钮-->
                         <el-button type="primary" type="danger" class="el-button--danger" @click="handleBatchDelete()">批量删除</el-button>
-
                     </div>
                     <el-table size="small" current-row-key="id" :data="dataList" stripe highlight-current-row @selection-change="handleSelectionChange">
                         <!--批量删除复选框-->
@@ -134,7 +133,7 @@
                     </div>
 
                     <!-- 编辑标签弹层 -->
-                    <div class="add-form">
+                    <div class="edit-form">
                         <el-dialog title="编辑检查项" :visible.sync="dialogFormVisible4Edit">
                             <el-form ref="dataEditForm" :model="formData" :rules="rules" label-position="right" label-width="100px">
                                 <el-row>
